@@ -2,7 +2,7 @@
   "name": "time_table",
   "private": true,
   "version": "0.0.0",
-  "description": "a Sails application",
+  "description": "a chart showing the departure and arrival times of trains, buses, or planes.",
   "keywords": [],
   "dependencies": {
     "ejs": "~0.8.4",
