@@ -46,5 +46,6 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'get /me': 'ScheduleController.hi'
+  'get /schedule': 'ScheduleController.index',
+  'post /schedule': 'ScheduleController.create',
 };
