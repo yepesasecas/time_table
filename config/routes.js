@@ -46,6 +46,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'get /schedule': 'ScheduleController.index',
-  'post /schedule': 'ScheduleController.create',
+  'get /job': 'JobController.index',
+  'get /job/:id': 'JobController.show',
+  'post /job': 'JobController.create',
+
+  'get /timeline': 'TimelineController.index'
 };

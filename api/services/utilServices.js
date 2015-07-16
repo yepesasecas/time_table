@@ -1,5 +1,7 @@
-var schedule = require('node-schedule');
+var schedule = require('node-schedule'),
+    request  = require('request');
 
 module.exports = {
-  schedule: schedule
+  schedule: schedule,
+  request: request
 }

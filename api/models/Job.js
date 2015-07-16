@@ -8,19 +8,17 @@
 module.exports = {
 
   attributes: {
-    name:{
-      type: "string",
-      required: true
-    },
-
     arrive:{
       type: "boolean",
       required: true
     },
 
-    url:{
-      type: "string",
-      required: true
+    arrival_status:{
+      type: "string"
+    },
+
+    arrival_time:{
+      type: "date"
     },
 
     callback_url:{
@@ -33,9 +31,26 @@ module.exports = {
       required: true
     },
 
-    arrival_time:{
-      type: "date"
+    name:{
+      type: "string",
+      required: true
+    },
+
+    response:{
+      type: "text"
+    },
+
+    url:{
+      type: "string",
+      required: true
     }
+  },
+
+  new_job: function(params){
+    var job = params;
+    job["departure_time"] = myDate.create(params["departure_time"]);
+    job["arrive"] = false;
+    return job;
   }
 };
 
