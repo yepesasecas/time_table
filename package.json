@@ -35,5 +35,9 @@
     "url": "git://github.com/yepesasecas/time_table.git"
   },
   "author": "yepesasecas",
-  "license": ""
+  "license": "",
+
+  "scripts": {
+    "start": "sails lift"
+  }
 }
