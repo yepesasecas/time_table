@@ -41,8 +41,9 @@ module.exports = {
   // url: "http://www.golazzos.com"
   // }
   show:function(req, res){
-    Job.find(res.param["id"]).exec(function(err, found){
-      return res.send(200, found);
+    Job.find(req.param("id")).exec(function(err, found){
+      console.log(found[0]);
+      return res.send(200, found[0]);
     });
   },
 

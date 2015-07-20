@@ -53,20 +53,24 @@ var create_job_view = function(job){
   return job_view;
 }
 
-var get_job = function(id){
+var get_job = function(id, cb){
   io.socket.get("/job/" + id, function(data){
-
+    console.log(data);
+    cb(data);
   });
 }
 
 io.socket.get("/job", function(data, jwer){
   for (var i = 0; i < data.length; i++) {
     var job = data[i];
-    console.log(job);
-    $("#cd-timeline").append(create_job_view(job));
+    $("#cd-timeline").prepend(create_job_view(job));
   };
 });
 
 io.socket.on('job', function onServerSentEvent(msg){
-  console.log(msg);
+  get_job(msg.id, function(new_job){
+    var job_view = $(".job-" + new_job.id);
+    job_view.remove();
+    $("#cd-timeline").prepend(create_job_view(new_job));
+  });
 });
