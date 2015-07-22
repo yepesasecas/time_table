@@ -17,6 +17,14 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
+  connections:{
+    production: {
+      adapter: 'sails-mongo',
+      // url: process.env.MONGOLAB_URI
+      url: "mongodb://heroku_jwq85gr3:irve9ieh9o6ng8e2luvt2j7ba2@ds043012.mongolab.com:43012/heroku_jwq85gr3"
+    }
+  },
+
   models: {
     connection: 'production'
   },
@@ -25,7 +33,7 @@ module.exports = {
    * Set the port in the production environment to 80                        *
    ***************************************************************************/
 
-  // port: 80,
+  // port: 3000,
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
