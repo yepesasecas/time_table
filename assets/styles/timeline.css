@@ -41,11 +41,11 @@ Modules - reusable parts of our design
 
 -------------------------------- */
 .cd-container {
-  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
   width: 90%;
-  max-width: 1170px;
+  max-width: 700px;
   margin: 0 auto;
 }
+
 .cd-container::after {
   /* clearfix */
   content: '';
@@ -66,8 +66,7 @@ header {
 }
 header h1 {
   color: white;
-  font-size: 18px;
-  font-size: 1.125rem;
+  font-size: 1.7em;
 }
 
 #cd-timeline {
@@ -124,17 +123,17 @@ header h1 {
 }
 
 .background-green{
-  background-color: green;
+  background-color: #75ce66;
   color: white;
 }
 
 .background-red{
-  background-color: red;
+  background-color: #c03b44;
   color: white;
 }
 
 .background-yellow{
-  background-color: yellow;
+  background-color: #f0ca45;
   color: black;
 }
 
