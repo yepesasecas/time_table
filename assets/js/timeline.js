@@ -70,8 +70,12 @@ io.socket.get("/job", function(data, jwer){
 io.socket.on('job', function onServerSentEvent(msg){
   get_job(msg.id, function(new_job){
     var job_view = $(".job-" + new_job.id);
-    job_view.remove();
-    $("#cd-timeline").prepend(create_job_view(new_job));
+    if(job_view.length){
+      job_view.replaceWith(create_job_view(new_job));
+    }
+    else{
+      $("#cd-timeline").prepend(create_job_view(new_job));
+    }
   });
 });
 
