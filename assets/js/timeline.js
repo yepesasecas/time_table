@@ -7,12 +7,12 @@ var create_job_decorator = function(job){
       job_decorator.status_background = "background-green";
       job_decorator.response          = "Click to see response.";
     }else{
-      job_decorator.arrival_status    = "Error";
+      job_decorator.arrival_status    = "";
       job_decorator.status_background = "background-red";
       job_decorator.response          = job.response;
     }
   }else{
-    job_decorator.arrival_status    = "...";
+    job_decorator.arrival_status    = "";
     job_decorator.status_background = "background-yellow";
     job_decorator.response          = "Job Scheduled.";
   }
