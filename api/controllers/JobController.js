@@ -22,8 +22,10 @@ module.exports = {
       Job.subscribe(req.socket, "");
     }
 
-    Job.find().exec(function(err, found){
-      return res.send(200, found);
+    Job.find()
+      .sort('departure_time')
+      .exec(function(err, found){
+        return res.send(200, found);
     });
   },
 
