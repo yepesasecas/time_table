@@ -1,6 +1,6 @@
 module.exports = {
   create: function(departure_time){
-    var date = new Date(
+    var date = new Date(Date.UTC(
       departure_time.year,
       departure_time.month,
       departure_time.day,
@@ -8,7 +8,7 @@ module.exports = {
       departure_time.min,
       departure_time.second,
       departure_time.mili_second
-    );
+    ));
     return date;
   },
   now: function(){
