@@ -74,3 +74,7 @@ io.socket.on('job', function onServerSentEvent(msg){
     $("#cd-timeline").prepend(create_job_view(new_job));
   });
 });
+
+io.socket.on('disconnect', function(){
+  console.log('Lost connection to server');
+});
