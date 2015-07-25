@@ -1,5 +1,3 @@
-
-
 module.exports = {
   // [
   //   {
@@ -25,7 +23,11 @@ module.exports = {
     Job.find()
       .sort('departure_time')
       .exec(function(err, found){
-        return res.send(200, found);
+        var response = {
+          database_schedules: found,
+          scheduler_schedules: utilServices.schedule
+        };
+        return res.send(200, response);
     });
   },
 
@@ -86,7 +88,7 @@ module.exports = {
         Job.publishCreate({id: created.id});
 
         // Schedule Job
-        var j = schedule.scheduleJob(job.departure_time, function(){
+        var j = schedule.scheduleJob(job.name, job.departure_time, function(){
 
           // Request Job Url
           request(job.url, function(err, response, body){

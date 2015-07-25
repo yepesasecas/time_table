@@ -53,22 +53,17 @@ var create_job_view = function(job){
   return job_view;
 }
 
-var get_job = function(id, cb){
-  io.socket.get("/job/" + id, function(data){
-    console.log(data);
-    cb(data);
-  });
+var get_timeline = function(data){
+  console.log(data);
+  var database_jobs = data.database_schedules;
+  for (var i = 0; i < database_jobs.length; i++) {
+    $("#cd-timeline").prepend(create_job_view(database_jobs[i]));
+  };
+  $(".cd-container").prepend(JSON.stringify(data.scheduler_schedules));
 }
 
-io.socket.get("/job", function(data, jwer){
-  for (var i = 0; i < data.length; i++) {
-    var job = data[i];
-    $("#cd-timeline").prepend(create_job_view(job));
-  };
-});
-
-io.socket.on('job', function onServerSentEvent(msg){
-  get_job(msg.id, function(new_job){
+var get_job = function(id){
+  io.socket.get("/job/" + id, function(new_job){
     var job_view = $(".job-" + new_job.id);
     if(job_view.length){
       job_view.replaceWith(create_job_view(new_job));
@@ -77,6 +72,14 @@ io.socket.on('job', function onServerSentEvent(msg){
       $("#cd-timeline").prepend(create_job_view(new_job));
     }
   });
+}
+
+io.socket.get("/job", function(data, jwer){
+  get_timeline(data);
+});
+
+io.socket.on('job', function onServerSentEvent(msg){
+  get_job(msg.id);
 });
 
 io.socket.on('disconnect', function(){
